@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SURIBELL - Fábrica de Pães de Ló</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #5a3921;
+        }
+        
+        header {
+            background-color: #5a3921;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 4rem 0;
+            border-bottom: 1px solid #e0d5c5;
+        }
+        
+        section:last-child {
+            border-bottom: none;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #5a3921;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #5a3921;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #5a3921;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        
+        .btn:hover {
+            background-color: #7a5941;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .whatsapp-btn {
+            background-color: #25d366;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128c7e;
+        }
+        
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .gallery-item {
+            width: 250px;
+            height: 250px;
+            background-color: #e0d5c5;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8c7b6b;
+            font-weight: bold;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background-color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e0d5c5;
+        }
+        
+        th {
+            background-color: #5a3921;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f5f0;
+        }
+        
+        tr:hover {
+            background-color: #e0d5c5;
+        }
+        
+        .table-notes {
+            font-style: italic;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+            color: #8c7b6b;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e0d5c5;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: #fff;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #5a3921;
+            box-shadow: 0 0 0 2px rgba(90, 57, 33, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .form-col {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .submit-btn {
+            background-color: #25d366;
+            color: #fff;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .submit-btn:hover {
+            background-color: #128c7e;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            background-color: #5a3921;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .contact-info {
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info i {
+            margin-right: 0.5rem;
+            color: #e0d5c5;
+        }
+        
+        .tab-container {
+            margin: 2rem 0;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: #e0d5c5;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn:first-child {
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .tab-btn:last-child {
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        
+        .tab-btn.active {
+            background-color: #5a3921;
+            color: #fff;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .floating-whatsapp:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header id="home">
+        <div class="container">
+            <h1>SURIBELL</h1>
+            <p>Fábrica de Pães de Ló</p>
+        </div>
+    </header>
+    
+    <!-- Introdução -->
+    <section id="intro">
+        <div class="container">
+            <div class="intro">
+                <h2>Bem-vindo à SURIBELL</h2>
+                <p>Somos especialistas na produção de pães de ló de alta qualidade. Nossos produtos são preparados com ingredientes selecionados, seguindo receitas tradicionais que garantem maciez, sabor e textura perfeita para seus bolos e sobremesas.</p>
+            </div>
+            
+            <!-- Galeria de imagens (placeholders) -->
+            <div class="gallery">
+                <div class="gallery-item">Pão de Ló Tradicional</div>
+                <div class="gallery-item">Pão de Ló de Chocolate</div>
+                <div class="gallery-item">Rocambole</div>
+            </div>
+            
+            <!-- Botões de navegação -->
+            <div class="btn-container">
+                <a href="#tabelas" class="btn">Ver Tabelas de Preço</a>
+                <a href="#pedido" class="btn">Fazer Pedido</a>
+                <a href="#contato" class="btn">Contato</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tabelas de Preço -->
+    <section id="tabelas">
+        <div class="container">
+            <h2>Tabelas de Preço</h2>
+            
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="openTab('consumidores')">Para Consumidores</button>
+                    <button class="tab-btn" onclick="openTab('padarias')">Para Padarias (Atacado)</button>
+                </div>
+                
+                <!-- Tabela para Consumidores -->
+                <div id="consumidores" class="tab-content active">
+                    <h3>Tabela para Consumidores</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Tamanho</th>
+                                <th>Serve</th>
+                                <th>Preço (Branco)</th>
+                                <th>Preço (Chocolate)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Redondo</td><td>17x17 cm</td><td>5 pessoas</td><td>R$ 12,00</td><td>R$ 13,00</td></tr>
+                            <tr><td>Redondo</td><td>22x22 cm</td><td>10 pessoas</td><td>R$ 14,00</td><td>R$ 15,00</td></tr>
+                            <tr><td>Redondo</td><td>24x24 cm</td><td>15 pessoas</td><td>R$ 24,00</td><td>R$ 25,00</td></tr>
+                            <tr><td>Redondo</td><td>26x26 cm</td><td>20 pessoas</td><td>R$ 30,00</td><td>R$ 31,00</td></tr>
+                            <tr><td>Redondo</td><td>28x28 cm</td><td>25 pessoas</td><td>R$ 34,00</td><td>R$ 35,00</td></tr>
+                            <tr><td>Redondo</td><td>33x33 cm</td><td>30 pessoas</td><td>R$ 40,00</td><td>R$ 41,00</td></tr>
+                            <tr><td>Quadrado</td><td>25x30 cm</td><td>30 pessoas</td><td>R$ 40,00</td><td>R$ 42,00</td></tr>
+                            <tr><td>Quadrado</td><td>29x33 cm</td><td>40 pessoas</td><td>R$ 43,00</td><td>R$ 45,00</td></tr>
+                            <tr><td>Quadrado</td><td>29x41 cm</td><td>50 pessoas</td><td>R$ 50,00</td><td>R$ 52,00</td></tr>
+                            <tr><td>Quadrado</td><td>41x34 cm</td><td>60 pessoas</td><td>R$ 55,00</td><td>R$ 57,00</td></tr>
+                            <tr><td>Quadrado</td><td>41x40 cm</td><td>70 pessoas</td><td>R$ 63,00</td><td>R$ 65,00</td></tr>
+                            <tr><td>Quadrado</td><td>41x47 cm</td><td>80 pessoas</td><td>R$ 68,00</td><td>R$ 70,00</td></tr>
+                            <tr><td>Quadrado</td><td>41x55 cm</td><td>90 pessoas</td><td>R$ 84,00</td><td>R$ 86,00</td></tr>
+                            <tr><td>Quadrado</td><td>45x65 cm</td><td>100 pessoas</td><td>R$ 94,00</td><td>R$ 96,00</td></tr>
+                            <tr><td>Rocambole</td><td>Padrão</td><td>–</td><td>R$ 25,00</td><td>R$ 27,00</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="table-notes">Observação: Chocolate custa R$ 1,00 a mais no redondo e R$ 2,00 a mais no quadrado.</p>
+                </div>
+                
+                <!-- Tabela para Padarias -->
+                <div id="padarias" class="tab-content">
+                    <h3>Tabela para Padarias (Atacado)</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tipo</th>
+                                <th>Tamanho</th>
+                                <th>Serve</th>
+                                <th>Preço (Branco)</th>
+                                <th>Preço (Chocolate)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Redondo</td><td>17x17 cm</td><td>5 pessoas</td><td>R$ 9,00</td><td>R$ 10,00</td></tr>
+                            <tr><td>Redondo</td><td>22x22 cm</td><td>10 pessoas</td><td>R$ 11,00</td><td>R$ 12,00</td></tr>
+                            <tr><td>Redondo</td><td>24x24 cm</td><td>15 pessoas</td><td>R$ 20,00</td><td>R$ 21,00</td></tr>
+                            <tr><td>Redondo</td><td>26x26 cm</td><td>20 pessoas</td><td>R$ 26,00</td><td>R$ 27,00</td></tr>
+                            <tr><td>Redondo</td><td>28x28 cm</td><td>25 pessoas</td><td>R$ 30,00</td><td>R$ 31,00</td></tr>
+                            <tr><td>Redondo</td><td>33x33 cm</td><td>30 pessoas</td><td>R$ 36,00</td><td>R$ 37,00</td></tr>
+                            <tr><td>Quadrado</td><td>25x30 cm</td><td>30 pessoas</td><td>R$ 36,00</td><td>R$ 38,00</td></tr>
+                            <tr><td>Quadrado</td><td>29x33 cm</td><td>40 pessoas</td><td>R$ 39,00</td><td>R$ 41,00</td></tr>
+                            <tr><td>Quadrado</td><td>29x41 cm</td><td>50 pessoas</td><td>R$ 46,00</td><td>R$ 48,00</td></tr>
+                            <tr><td>Quadrado</td><td>41x34 cm</td><td>60 pessoas</td><td>R$ 51,00</td><td>R$ 53,00</td></tr>
+                            <tr><td>Quadrado</td><td>41x40 cm</td><td>70 pessoas</td><td>R$ 59,00</td><td>R$ 61,00</td></tr>
+                            <tr><td>Quadrado</td><td>41x47 cm</td><td>80 pessoas</td><td>R$ 64,00</td><td>R$ 66,00</td></tr>
+                            <tr><td>Quadrado</td><td>41x55 cm</td><td>90 pessoas</td><td>R$ 80,00</td><td>R$ 82,00</td></tr>
+                            <tr><td>Quadrado</td><td>45x65 cm</td><td>100 pessoas</td><td>R$ 90,00</td><td>R$ 92,00</td></tr>
+                            <tr><td>Rocambole</td><td>Padrão</td><td>–</td><td>R$ 23,00</td><td>R$ 25,00</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="table-notes">Observação: Preços para compras acima de 5 unidades. Chocolate custa R$ 1,00 a mais no redondo e R$ 2,00 a mais no quadrado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Página de Pedido -->
+    <section id="pedido">
+        <div class="container">
+            <h2>Faça seu Pedido</h2>
+            <p>Preencha o formulário abaixo e envie seu pedido diretamente para o nosso WhatsApp. Lembre-se que pedidos devem ser feitos com pelo menos 1 dia de antecedência.</p>
+            
+            <form id="pedidoForm" onsubmit="return enviarWhatsApp()">
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="tipo">Tipo de Bolo</label>
+                            <select id="tipo" name="tipo" required>
+                                <option value="">Selecione...</option>
+                                <option value="Redondo">Redondo</option>
+                                <option value="Quadrado">Quadrado</option>
+                                <option value="Rocambole">Rocambole</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="tamanho">Tamanho</label>
+                            <select id="tamanho" name="tamanho" required>
+                                <option value="">Selecione o tipo primeiro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="quantidade">Quantidade</label>
+                            <input type="number" id="quantidade" name="quantidade" min="1" value="1" required>
+                        </div>
+                    </div>
+                    <div class="form-col">
+                        <div class="form-group">
+                            <label for="chocolate">Chocolate</label>
+                            <select id="chocolate" name="chocolate" required>
+                                <option value="Não">Não</option>
+                                <option value="Sim">Sim</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="observacoes">Observações</label>
+                    <textarea id="observacoes" name="observacoes" rows="4"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fab fa-whatsapp"></i> Enviar Pedido via WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Contato -->
+    <section id="contato">
+        <div class="container">
+            <h2>Contato</h2>
+            <div class="contact-info">
+                <p><i class="fas fa-phone"></i> Telefone/WhatsApp: (51) 99379-8996</p>
+                <p><i class="fas fa-clock"></i> Pedidos devem ser feitos com no mínimo 1 dia de antecedência</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Rodapé -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SURIBELL - Fábrica de Pães de Ló</p>
+        </div>
+    </footer>
+    
+    <!-- Botão flutuante do WhatsApp -->
+    <a href="https://wa.me/5551993798996" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <script>
+        // Função para mudar entre as abas
+        function openTab(tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            
+            // Esconder todas as abas
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // Desativar todos os botões
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // Mostrar a aba selecionada
+            document.getElementById(tabName).classList.add('active');
+            
+            // Ativar o botão correspondente
+            for (let i = 0; i < tabButtons.length; i++) {
+                if (tabButtons[i].textContent.toLowerCase().includes(tabName)) {
+                    tabButtons[i].classList.add('active');
+                }
+            }
+        }
+        
+        // Função para atualizar as opções de tamanho com base no tipo selecionado
+        document.getElementById('tipo').addEventListener('change', function() {
+            const tipoSelecionado = this.value;
+            const tamanhoSelect = document.getElementById('tamanho');
+            
+            // Limpar as opções atuais
+            tamanhoSelect.innerHTML = '';
+            
+            // Adicionar novas opções com base no tipo selecionado
+            if (tipoSelecionado === 'Redondo') {
+                const tamanhos = [
+                    { value: '17x17 cm', text: '17x17 cm - Serve 5 pessoas' },
+                    { value: '22x22 cm', text: '22x22 cm - Serve 10 pessoas' },
+                    { value: '24x24 cm', text: '24x24 cm - Serve 15 pessoas' },
+                    { value: '26x26 cm', text: '26x26 cm - Serve 20 pessoas' },
+                    { value: '28x28 cm', text: '28x28 cm - Serve 25 pessoas' },
+                    { value: '33x33 cm', text: '33x33 cm - Serve 30 pessoas' }
+                ];
+                
+                tamanhos.forEach(function(tamanho) {
+                    const option = document.createElement('option');
+                    option.value = tamanho.value;
+                    option.textContent = tamanho.text;
+                    tamanhoSelect.appendChild(option);
+                });
+            } else if (tipoSelecionado === 'Quadrado') {
+                const tamanhos = [
+                    { value: '25x30 cm', text: '25x30 cm - Serve 30 pessoas' },
+                    { value: '29x33 cm', text: '29x33 cm - Serve 40 pessoas' },
+                    { value: '29x41 cm', text: '29x41 cm - Serve 50 pessoas' },
+                    { value: '41x34 cm', text: '41x34 cm - Serve 60 pessoas' },
+                    { value: '41x40 cm', text: '41x40 cm - Serve 70 pessoas' },
+                    { value: '41x47 cm', text: '41x47 cm - Serve 80 pessoas' },
+                    { value: '41x55 cm', text: '41x55 cm - Serve 90 pessoas' },
+                    { value: '45x65 cm', text: '45x65 cm - Serve 100 pessoas' }
+                ];
+                
+                tamanhos.forEach(function(tamanho) {
+                    const option = document.createElement('option');
+                    option.value = tamanho.value;
+                    option.textContent = tamanho.text;
+                    tamanhoSelect.appendChild(option);
+                });
+            } else if (tipoSelecionado === 'Rocambole') {
+                const option = document.createElement('option');
+                option.value = 'Padrão';
+                option.textContent = 'Padrão';
+                tamanhoSelect.appendChild(option);
+            } else {
+                const option = document.createElement('option');
+                option.value = '';
+                option.textContent = 'Selecione o tipo primeiro';
+                tamanhoSelect.appendChild(option);
+            }
+        });
+        
+        // Função para enviar mensagem via WhatsApp
+        function enviarWhatsApp() {
+            const nome = document.getElementById('nome').value;
+            const telefone = document.getElementById('telefone').value;
+            const tipo = document.getElementById('tipo').value;
+            const tamanho = document.getElementById('tamanho').value;
+            const quantidade = document.getElementById('quantidade').value;
+            const chocolate = document.getElementById('chocolate').value;
+            const observacoes = document.getElementById('observacoes').value;
+            
+            // Verificar se todos os campos obrigatórios foram preenchidos
+            if (!nome || !telefone || !tipo || !tamanho || !quantidade) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return false;
+            }
+            
+            // Montar a mensagem
+            let mensagem = `*Novo Pedido - SURIBELL*\n\n`;
+            mensagem += `*Nome:* ${nome}\n`;
+            mensagem += `*Telefone:* ${telefone}\n`;
+            mensagem += `*Pedido:* ${quantidade}x Pão de Ló ${tipo} ${tamanho}\n`;
+            mensagem += `*Chocolate:* ${chocolate}\n`;
+            
+            if (observacoes) {
+                mensagem += `*Observações:* ${observacoes}\n`;
+            }
+            
+            // Codificar a mensagem para URL
+            const mensagemCodificada = encodeURIComponent(mensagem);
+            
+            // Abrir o WhatsApp com a mensagem
+            window.open(`https://wa.me/5551993798996?text=${mensagemCodificada}`, '_blank');
+            
+            return false; // Impedir o envio do formulário
+        }
+    </script>
+</body>
+</html>
